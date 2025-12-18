@@ -1,7 +1,7 @@
 
 from flask import Flask
-from src.comun.utilidades import db, api, ma, jwt
-from src.rutas.rutas import RutasGeneral
+from src.common.utils import db, api, ma, jwt
+from src.routes.routes import General_Routes
 
 
 def crear_aplicacion():
@@ -12,8 +12,6 @@ def crear_aplicacion():
 
     app.config.from_object("configuracion.Configuracion")
 
-    #iniciar las rutas
-    RutasGeneral(api)
 
 
     db.init_app(app)
@@ -21,6 +19,9 @@ def crear_aplicacion():
     ma.init_app(app)
     jwt.init_app(app)
 
+    #iniciar las rutas
+    with app.app_context():
+        General_Routes(api)
 
     return app
 

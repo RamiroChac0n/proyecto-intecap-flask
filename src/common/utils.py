@@ -15,7 +15,8 @@ authorizations = {
     }
 }
 
-api = Api(authorizations=authorizations,prefix="/api/v1",security="Bearer")
+# api = Api(authorizations=authorizations,prefix="/api/v1",security="Bearer")
+api = Api(prefix='/api1/v1')
 
 
 ma = Marshmallow()
